@@ -1,0 +1,130 @@
+{
+  "name": "reactfull",
+  "version": "1.0.0",
+  "description": "A full end-to-end React start with unit tests, integration tests, webdriver responsive tests, and server-side rendering (with an API too).",
+  "scripts": {
+    "build": "concurrently 'npm test' 'npm run webpack'",
+    "browser-sync": "node ./browser-sync.js",
+    "postinstall": "selenium-standalone install",
+    "start": "NODE_ENV=development PORT=$(get-port) concurrently 'npm run browser-sync' 'npm run watch'",
+    "test": "NODE_ENV=development PORT=$(get-port) concurrently 'npm run test:lint' 'npm run test:webdriver'",
+    "test:lint": "standard",
+    "test:webdriver": "concurrently -k 'npm run browser-sync' 'npm run webdriver'",
+    "watch": "concurrently 'npm run webpack -- --watch -d' 'npm run watch:lint'",
+    "watch:lint": "onchange '**/*.js' '**/*.jsx' -- npm run test:lint",
+    "webdriver": "node ./webdriver.js",
+    "webpack": "webpack --colors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/ahmednuaman/reactfull.git"
+  },
+  "author": "Ahmed Nuaman (ahmed@ahmednuaman.com)",
+  "bugs": {
+    "url": "https://gitlab.com/ahmednuaman/reactfull/issues"
+  },
+  "homepage": "https://gitlab.com/ahmednuaman/reactfull#README",
+  "dependencies": {
+    "autobind-decorator": "^1.3.4",
+    "body-parser": "^1.15.2",
+    "bootstrap-sass": "^3.3.7",
+    "bootswatch": "^3.3.7",
+    "classnames": "^2.2.5",
+    "console": "^0.5.2",
+    "d3": "^4.2.7",
+    "express": "^4.14.0",
+    "lodash": "^4.17.2",
+    "moment": "^2.15.2",
+    "numeral": "^1.5.3",
+    "react": "^15.3.2",
+    "react-bootstrap": "^0.30.5",
+    "react-d3-basic": "^1.6.11",
+    "react-dom": "^15.3.2",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.8.1",
+    "react-router-bootstrap": "^0.23.1",
+    "react-router-redux": "^4.0.6",
+    "react-sidebar": "^2.2.1",
+    "redux": "^3.6.0",
+    "remove": "^0.1.5",
+    "xlsx": "^0.8.0"
+  },
+  "devDependencies": {
+    "async": "^2.1.4",
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.20.0",
+    "babel-eslint": "^7.0.0",
+    "babel-loader": "^6.2.9",
+    "babel-plugin-lodash": "^3.2.10",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "babel-register": "^6.16.3",
+    "browser-sync": "^2.17.3",
+    "chromedriver": "^2.25.3",
+    "clean-webpack-plugin": "^0.1.14",
+    "concurrently": "^3.1.0",
+    "cross-env": "^3.1.3",
+    "css-loader": "^0.26.1",
+    "express-react-router": "^2.4.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "get-port-cli": "^1.0.0",
+    "html-loader": "^0.4.4",
+    "http-proxy": "^1.16.2",
+    "image-diff": "^1.6.3",
+    "img-loader": "^1.3.1",
+    "json-loader": "^0.5.4",
+    "jsx-loader": "^0.13.2",
+    "mkdirp": "^0.5.1",
+    "node-sass": "^4.0.0",
+    "nodemon": "^1.11.0",
+    "onchange": "^3.2.0",
+    "progress-bar-webpack-plugin": "^1.9.0",
+    "pug-html-loader": "^1.0.9",
+    "pug-loader": "^2.3.0",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^4.0.2",
+    "script-loader": "^0.7.0",
+    "selenium-standalone": "^5.9.0",
+    "selenium-webdriver": "^3.0.1",
+    "standard": "^8.6.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.14.0",
+    "webpack-dev-middleware": "^1.8.4",
+    "webpack-hot-middleware": "^2.13.0"
+  },
+  "babel": {
+    "presets": [
+      "latest",
+      "react",
+      "stage-0"
+    ],
+    "plugins": [
+      "lodash",
+      "transform-decorators-legacy"
+    ]
+  },
+  "concurrently": {
+    "raw": true
+  },
+  "eslintConfig": {
+    "plugins": [
+      "babel",
+      "async-await"
+    ],
+    "rules": {
+      "async-await/space-after-async": 2,
+      "async-await/space-after-await": 2
+    },
+    "experimental": true
+  },
+  "standard": {
+    "ignore": [
+      "build"
+    ],
+    "parser": "babel-eslint"
+  }
+}

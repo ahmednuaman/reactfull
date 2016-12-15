@@ -1,0 +1,12 @@
+{
+  "/": "Home",
+  "/foo": "Foo",
+  "/bar": "Bar",
+  "/foobar": "Foobar",
+  "/parent": {
+    "title": "Parent",
+    "/child1": "Child 1",
+    "/child2": "Child 2",
+    "/child3": "Child 3"
+  }
+}
